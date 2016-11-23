@@ -93,8 +93,7 @@
 					type : 'get',
 					url : 'https://cloud.arest.io/008',
 					dataType : 'json',
-					json : true,
-					cache : false
+					json : true
 				}).done(function(response) {
 					if (response.connected) {
 						arrayTemperatures.push({
