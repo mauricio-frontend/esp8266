@@ -96,17 +96,31 @@
 					json : true,
 					cache : false
 				}).done(function(response) {
-					arrayTemperatures.push({
-						x : new Date(),
-						y : response.variables.temperature
-					});
+					if (response.connected) {
+						arrayTemperatures.push({
+							x : new Date(),
+							y : response.variables.temperature
+						});
 
-					arrayHumidities.push({
-						x : new Date(),
-						y : response.variables.humidity
-					});
+						arrayHumidities.push({
+							x : new Date(),
+							y : response.variables.humidity
+						});
 
-					chart.render();
+						chart.render();
+					} else {
+						arrayTemperatures.push({
+							x : new Date(),
+							y : 0
+						});
+
+						arrayHumidities.push({
+							x : new Date(),
+							y : 0
+						});
+
+						chart.render();
+					}
 
 					window.setTimeout(function() {
 						loadSensorData();
